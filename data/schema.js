@@ -18,11 +18,13 @@ type Post {
   views: Int
   author: Author
 }
+type FortuneCookie {
+  message: String
+}
 type Query {
   author(firstName: String, lastName: String): Author
-  authors: [Author]
+  fortune: FortuneCookie
   posts: [Post]
-  getFortuneCookie: String # we'll use this later
 }
 `;
 
