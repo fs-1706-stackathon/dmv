@@ -1,5 +1,6 @@
 const mocks = {
-  String: () => 'It works!',
+  String: () => 'Dummy string',
+  Number: () => 0,
 };
 
 export default mocks;
