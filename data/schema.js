@@ -26,6 +26,9 @@ type Query {
   fortune: FortuneCookie
   posts: [Post]
 }
+#type Mutation {
+#
+#}
 `;
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
