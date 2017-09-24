@@ -5,26 +5,21 @@ import resolvers from './resolvers';
 
 // typeDefs
 const typeDefs = `
-type Author {
-  id: Int
-  firstName: String
-  lastName: String
-  posts: [Post]
+type Driver {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  cars: [Car]
 }
-type Post {
-  id: Int
-  title: String
-  text: String
-  views: Int
-  author: Author
-}
-type FortuneCookie {
-  message: String
+type Car {
+  id: Int!
+  title: String!
+  regNumber: Int!
+  driver: Driver
 }
 type Query {
-  author(firstName: String, lastName: String): Author
-  fortune: FortuneCookie
-  posts: [Post]
+  drivers(firstName: String, lastName: String): Driver
+  cars: [Car]
 }
 #type Mutation {
 #
