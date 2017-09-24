@@ -1,7 +1,7 @@
-import Sequelize from 'sequelize';
-import casual from 'casual';
-import _ from 'lodash';
-import fetch from 'node-fetch';
+const Sequelize = require('sequelize');
+const casual = require('casual');
+const _ = require('lodash');
+const { generateMakeModel, generateVin } = require('./fake-data');
 
 const db = new Sequelize('dmv', null, null, {
   dialect: 'sqlite',
@@ -30,9 +30,13 @@ db.sync({ force: true }).then(() => {
       firstName: casual.first_name,
       lastName: casual.last_name,
     }).then((driver) => {
+      const makeModels = generateMakeModel();
+      const make = makeModels[0];
+      const model = makeModels[1];
       return driver.createCar({
-        make: `A car by ${driver.firstName}`,
-        model: casual.sentences(1),
+        make,
+        model,
+        vin: generateVin(),
       });
     });
   });
@@ -42,4 +46,4 @@ const Driver = db.models.driver;
 const Car = db.models.car;
 
 // and at the bottom, modify the export to include FortuneCookie
-export { Driver, Car };
+module.exports = { Driver, Car };

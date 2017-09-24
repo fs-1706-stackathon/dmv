@@ -1,7 +1,7 @@
-import {
+const {
   makeExecutableSchema,
-} from 'graphql-tools';
-import resolvers from './resolvers';
+} = require('graphql-tools');
+const resolvers = require('./resolvers');
 
 // typeDefs
 const typeDefs = `
@@ -13,16 +13,22 @@ type Driver {
 }
 type Car {
   id: Int!
-  title: String!
-  regNumber: Int!
+  make: String!
+  model: String!
+  vin: String!
   driver: Driver
 }
 type Query {
-  drivers(firstName: String, lastName: String): Driver
+  driver(id: Int): Driver
   cars: [Car]
+  car(id: Int, vin: String): Car
+  drivers: [Driver]
 }
+#type Mutation {
+#
+#}
 `;
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
-export default schema;
+module.exports = schema;
