@@ -1,4 +1,4 @@
-import { Driver, Car } from './connectors';
+const { Driver, Car } = require('./connectors');
 
 const resolvers = {
   Query: {
@@ -29,4 +29,4 @@ const resolvers = {
   },
 };
 
-export default resolvers;
+module.exports = resolvers;

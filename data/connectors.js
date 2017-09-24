@@ -1,7 +1,7 @@
-import Sequelize from 'sequelize';
-import casual from 'casual';
-import _ from 'lodash';
-import { generateMakeModel, generateVin } from './fake-data';
+const Sequelize = require('sequelize');
+const casual = require('casual');
+const _ = require('lodash');
+const { generateMakeModel, generateVin } = require('./fake-data');
 
 const db = new Sequelize('dmv', null, null, {
   dialect: 'sqlite',
@@ -46,4 +46,4 @@ const Driver = db.models.driver;
 const Car = db.models.car;
 
 // and at the bottom, modify the export to include FortuneCookie
-export { Driver, Car };
+module.exports = { Driver, Car };
