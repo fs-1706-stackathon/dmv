@@ -2,17 +2,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App';
-// import {Provider} from 'react-redux'
-// import store from './store'
-// import Routes from './routes'
+import { ApolloClient, createNetworkInterface, ApolloProvider } from 'react-apollo';
 
-// establishes socket connection
-// import './socket'
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({
+    uri: '/graphql',
+  }),
+});
 
 ReactDOM.render(
-  // <Provider store={store}>
-  // <Routes />
-  // </Provider>,
-  <App />,
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
   document.getElementById('app')
 )
