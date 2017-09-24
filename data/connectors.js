@@ -3,56 +3,43 @@ import casual from 'casual';
 import _ from 'lodash';
 import fetch from 'node-fetch';
 
-const db = new Sequelize('blog', null, null, {
+const db = new Sequelize('dmv', null, null, {
   dialect: 'sqlite',
-  storage: './blog.sqlite',
+  storage: './dmv.sqlite',
 });
 
-const AuthorModel = db.define('author', {
+const DriverModel = db.define('driver', {
   firstName: { type: Sequelize.STRING },
   lastName: { type: Sequelize.STRING },
 });
 
-const PostModel = db.define('post', {
-  title: { type: Sequelize.STRING },
-  text: { type: Sequelize.STRING },
+const CarModel = db.define('car', {
+  make: { type: Sequelize.STRING },
+  model: { type: Sequelize.STRING },
+  vin: { type: Sequelize.STRING },
 });
 
-AuthorModel.hasMany(PostModel);
-PostModel.belongsTo(AuthorModel);
+DriverModel.hasMany(CarModel);
+CarModel.belongsTo(DriverModel);
 
 // create mock data with a seed, so we always get the same
 casual.seed(123);
 db.sync({ force: true }).then(() => {
   _.times(10, () => {
-    return AuthorModel.create({
+    return DriverModel.create({
       firstName: casual.first_name,
       lastName: casual.last_name,
-    }).then((author) => {
-      return author.createPost({
-        title: `A post by ${author.firstName}`,
-        text: casual.sentences(3),
+    }).then((driver) => {
+      return driver.createCar({
+        make: `A car by ${driver.firstName}`,
+        model: casual.sentences(1),
       });
     });
   });
 });
 
-
-// add this somewhere in the middle
-const FortuneCookie = {
-  getOne() {
-    return fetch('http://fortunecookieapi.herokuapp.com/v1/cookie')
-      .then(res => res.json())
-      .then(res => {
-        console.log(res[0].fortune.message);
-        return res[0].fortune.message;
-      });
-  },
-};
-
-
-const Author = db.models.author;
-const Post = db.models.post;
+const Driver = db.models.driver;
+const Car = db.models.car;
 
 // and at the bottom, modify the export to include FortuneCookie
-export { Author, Post, FortuneCookie };
+export { Driver, Car };

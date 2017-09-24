@@ -1,27 +1,22 @@
-import { Author, Post, FortuneCookie } from './connectors';
+import { Driver, Car } from './connectors';
 
 const resolvers = {
   Query: {
-    author(_, args) {
-      return Author.find({ where: args });
+    drivers() {
+      return Driver.findAll();
     },
-    fortune() {
-      return {
-        message: FortuneCookie.getOne(),
-      };
-    },
-    posts() {
-      return Post.findAll();
+    cars() {
+      return Car.findAll();
     },
   },
-  Author: {
-    posts(author) {
-      return author.getPosts();
+  Driver: {
+    cars(driver) {
+      return driver.getCars();
     },
   },
-  Post: {
-    author(post) {
-      return post.getAuthor();
+  Car: {
+    driver(car) {
+      return car.getDriver();
     },
   },
 };
