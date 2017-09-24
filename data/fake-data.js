@@ -25,8 +25,8 @@ const generateVin = () => {
 };
 
 const generateMakeModel = () => {
-  return carMakeModels[ Math.floor(Math.random() * carMakeModels.length) ]
-}
+  return carMakeModels[Math.floor(Math.random() * carMakeModels.length)];
+};
 
 module.exports = {
   generateVin,
