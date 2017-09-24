@@ -13,13 +13,16 @@ type Driver {
 }
 type Car {
   id: Int!
-  title: String!
-  regNumber: Int!
+  make: String!
+  model: String!
+  vin: String!
   driver: Driver
 }
 type Query {
-  drivers(firstName: String, lastName: String): Driver
+  driver(id: Int): Driver
   cars: [Car]
+  car(id: Int, vin: String): Car
+  drivers: [Driver]
 }
 #type Mutation {
 #

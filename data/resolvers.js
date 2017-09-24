@@ -8,6 +8,14 @@ const resolvers = {
     cars() {
       return Car.findAll();
     },
+    car(root, args) {
+      const { id, vin } = args;
+      if (vin) return Car.find({ where: { vin } });
+      return Car.findById(id);
+    },
+    driver(root, id) {
+      return Driver.findById(id);
+    },
   },
   Driver: {
     cars(driver) {
