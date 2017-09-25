@@ -1,15 +1,23 @@
 /* eslint no-unused-vars:0 */
 import React from 'react';
 import DriverList from './DriverList';
-// import CarList from './CarList';
+import CarList from './CarList';
+import Header from './Header';
 
 const App = (props) => {
   return (
-    <div style={{display: 'flex'}} >
-      <h1>Drivers:</h1>
-      <DriverList />
-      {/* <h1>Cars:</h1>
-      <CarList /> */}
+    <div>
+      <Header />
+      <div style={{display: 'flex', justifyContent: 'space-around'}} >
+        <div>
+          <h2>Drivers:</h2>
+          <DriverList />
+        </div>
+        <div>
+          <h2>Cars:</h2>
+          <CarList />
+        </div>
+      </div>
     </div>
   );
 };
