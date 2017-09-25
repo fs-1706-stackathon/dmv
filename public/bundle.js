@@ -16071,16 +16071,45 @@ var _CarList = __webpack_require__(146);
 
 var _CarList2 = _interopRequireDefault(_CarList);
 
+var _Header = __webpack_require__(277);
+
+var _Header2 = _interopRequireDefault(_Header);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* eslint no-unused-vars:0 */
 var App = function App(props) {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_DriverList2.default, null),
-    _react2.default.createElement(_CarList2.default, null)
+    _react2.default.createElement(_Header2.default, null),
+    _react2.default.createElement(
+      'div',
+      { style: { display: 'flex', justifyContent: 'space-around' } },
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Drivers:'
+        ),
+        _react2.default.createElement(_DriverList2.default, null)
+      ),
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Cars:'
+        ),
+        _react2.default.createElement(_CarList2.default, null)
+      )
+    )
   );
-}; /* eslint no-unused-vars:0 */
+};
+
 exports.default = App;
 
 /***/ }),
@@ -18169,11 +18198,6 @@ var CarList = function CarList(props) {
     'div',
     null,
     _react2.default.createElement(
-      'h1',
-      null,
-      'Car List:'
-    ),
-    _react2.default.createElement(
       'ul',
       null,
       carsList
@@ -18202,6 +18226,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactApollo = __webpack_require__(44);
 
+var _CarList = __webpack_require__(146);
+
+var _CarList2 = _interopRequireDefault(_CarList);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); } /* eslint no-unused-vars:0 */
@@ -18223,11 +18251,6 @@ var DriverList = function DriverList(props) {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(
-      'h1',
-      null,
-      'Driver List:'
-    ),
     _react2.default.createElement(
       'ul',
       null,
@@ -18261,7 +18284,6 @@ var _reactApollo = __webpack_require__(44);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import './index.scss'
 var client = new _reactApollo.ApolloClient({
   networkInterface: (0, _reactApollo.createNetworkInterface)({
     uri: '/graphql'
@@ -33984,6 +34006,32 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 277 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(25);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header(props) {
+  return _react2.default.createElement(
+    'h1',
+    { style: { textAlign: 'center' } },
+    'Welcome to the DMV!'
+  );
+}; /* eslint no-unused-vars:0 */
+exports.default = Header;
 
 /***/ })
 /******/ ]);

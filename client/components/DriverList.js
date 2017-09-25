@@ -1,16 +1,18 @@
 /* eslint no-unused-vars:0 */
 import React from 'react';
 import { gql, graphql } from 'react-apollo';
+import CarList from './CarList';
 
 const DriverList = (props) => {
   const { drivers } = props.data;
   const driversList = drivers && drivers.map(driver => {
     console.log('driver: ', driver);
-    return <li key={driver.id}>{driver.firstName} {driver.lastName}</li>
+    return (
+      <li key={driver.id}>{driver.firstName} {driver.lastName}</li>
+    );
   });
   return (
     <div>
-      <h1>Driver List:</h1>
       <ul>
         {driversList}
       </ul>

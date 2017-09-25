@@ -9,7 +9,6 @@ const CarList = (props) => {
   });
   return (
     <div>
-      <h1>Car List:</h1>
       <ul>
         {carsList}
       </ul>
