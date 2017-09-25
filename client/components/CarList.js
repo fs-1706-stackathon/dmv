@@ -2,14 +2,14 @@
 import React from 'react';
 import { gql, graphql } from 'react-apollo';
 
-const CarList = (props) => {
+export const DumbCarList = (props) => {
+  console.log('IN THE CARS COMPONENT');
   const { cars } = props.data;
   const carsList = cars && cars.map(car => {
     return <li key={car.id}>{car.vin}: {car.make} - {car.model}</li>
   });
   return (
     <div>
-      <h1>Car List:</h1>
       <ul>
         {carsList}
       </ul>
@@ -26,4 +26,4 @@ export default graphql(gql`
       vin
     }
   }
-`)(CarList);
+`)(DumbCarList);

@@ -1,13 +1,15 @@
 /* eslint no-unused-vars:0 */
 import React from 'react';
 import DriverList from './DriverList';
-import CarList from './CarList';
+// import CarList from './CarList';
 
 const App = (props) => {
   return (
-    <div>
+    <div style={{display: 'flex'}} >
+      <h1>Drivers:</h1>
       <DriverList />
-      <CarList />
+      {/* <h1>Cars:</h1>
+      <CarList /> */}
     </div>
   );
 };
